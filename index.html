@@ -1,57 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로또 추첨기</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            padding: 2rem;
-            background-color: #f7f7f7;
-            text-align: center;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        .numbers {
-            margin-top: 20px;
-            font-size: 2rem;
-            color: #e74c3c;
-            letter-spacing: 10px;
-        }
-        button {
-            margin-top: 30px;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            background-color: #3498db;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 추첨기</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>로또 번호 추첨기</h1>
-    <div class="numbers" id="lottoNumbers">- - - - - -</div>
-    <button onclick="drawLotto()">추첨하기</button>
-
-    <script>
-        function drawLotto() {
-            const numbers = [];
-            while (numbers.length < 6) {
-                const num = Math.floor(Math.random() * 45) + 1;
-                if (!numbers.includes(num)) {
-                    numbers.push(num);
-                }
-            }
-            numbers.sort((a, b) => a - b);
-            document.getElementById('lottoNumbers').textContent = numbers.join(' ');
-        }
-    </script>
+    <div class="container">
+        <h1>로또 번호 추첨기</h1>
+        <div class="lotto-results" id="lottoContainer">
+            <!-- 5 sets of lotto numbers will be displayed here -->
+            <div class="lotto-row">- - - - - -</div>
+            <div class="lotto-row">- - - - - -</div>
+            <div class="lotto-row">- - - - - -</div>
+            <div class="lotto-row">- - - - - -</div>
+            <div class="lotto-row">- - - - - -</div>
+        </div>
+        <button id="drawButton">추첨하기</button>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
