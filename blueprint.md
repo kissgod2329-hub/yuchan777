@@ -12,6 +12,7 @@ A modern, framework-less web application for drawing lotto numbers. It provides 
   - Dark-themed UI with a black background.
   - Modern typography and interactive buttons with glow effects.
   - Mobile-responsive layout.
+  - **Custom Title: "준서네 로또방" in the header.**
   - **Login menu positioned in the top right.**
 - **Technology Stack:**
   - HTML5, CSS3 (Baseline features), Vanilla JavaScript.
@@ -26,9 +27,11 @@ A modern, framework-less web application for drawing lotto numbers. It provides 
   3. Integrate Firebase Authentication for Google login.
   4. Integrate Kakao JavaScript SDK for Kakao login.
   5. Handle authentication state and display user profile (if logged in).
+  6. **Add "준서네 로또방" title to the header.**
 - **Steps:**
   - [x] Update `index.html` with login button and modal structure.
   - [x] Add styles for the login menu and social buttons in `style.css`.
   - [x] Initialize Firebase and Kakao SDKs in `main.js`.
   - [x] Implement login/logout logic for both providers.
+  - [x] Add "준서네 로또방" header logo and styling.
   - [x] Verify functionality and UI.

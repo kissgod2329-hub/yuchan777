@@ -25,8 +25,19 @@ header {
     width: 100%;
     padding: 1.5rem 2rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
+}
+
+.header-logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-color), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px var(--shadow-color);
 }
 
 .user-menu {
