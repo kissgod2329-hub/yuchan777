@@ -7,22 +7,28 @@ A modern, framework-less web application for drawing lotto numbers. It provides 
 - **Core Features:**
   - Random lotto number generation (6 numbers from 1 to 45).
   - Ability to generate 5 sets of numbers at once.
+  - **Social Login System (Google & Kakao).**
 - **Design & Style:**
   - Dark-themed UI with a black background.
   - Modern typography and interactive buttons with glow effects.
   - Mobile-responsive layout.
+  - **Login menu positioned in the top right.**
 - **Technology Stack:**
   - HTML5, CSS3 (Baseline features), Vanilla JavaScript.
   - Web Components for UI consistency.
+  - **Firebase Authentication (for Google Login).**
+  - **Kakao JavaScript SDK (for Kakao Login).**
 
-## **Current Task: Expand Features and Update Aesthetic**
+## **Current Task: Social Login System Implementation**
 - **Plan:**
-  1. Update UI to support 5 sets of lotto numbers.
-  2. Implement a sleek dark theme with a black background.
-  3. Separate CSS and JS from `index.html` into `style.css` and `main.js` for better project structure.
-  4. Add modern CSS effects (glow, transitions, container queries).
+  1. Add a login button/menu to the top right of the application.
+  2. Implement a dropdown or modal for login options (Google, Kakao).
+  3. Integrate Firebase Authentication for Google login.
+  4. Integrate Kakao JavaScript SDK for Kakao login.
+  5. Handle authentication state and display user profile (if logged in).
 - **Steps:**
-  - [x] Update `index.html` structure.
-  - [x] Implement dark-themed styles in `style.css`.
-  - [x] Update `main.js` to generate 5 sets of numbers.
-  - [x] Verify functionality and design.
+  - [x] Update `index.html` with login button and modal structure.
+  - [x] Add styles for the login menu and social buttons in `style.css`.
+  - [x] Initialize Firebase and Kakao SDKs in `main.js`.
+  - [x] Implement login/logout logic for both providers.
+  - [x] Verify functionality and UI.
