@@ -8,30 +8,27 @@ A modern, framework-less web application for drawing lotto numbers. It provides 
   - Random lotto number generation (6 numbers from 1 to 45).
   - Ability to generate 5 sets of numbers at once.
   - **Social Login System (Google & Kakao).**
+  - **Auth-Restricted Access:** Drawing numbers requires a logged-in session.
 - **Design & Style:**
-  - Dark-themed UI with a black background.
+  - Dark-themed UI with a **Lotto-related background image**.
   - Modern typography and interactive buttons with glow effects.
   - Mobile-responsive layout.
-  - **Custom Title: "준서네 로또방" in the header.**
-  - **Login menu positioned in the top right.**
+  - **Centered Header Title: "준서네 로또방" (Large & Animated).**
+  - **Login menu positioned in the top right (Absolute).**
 - **Technology Stack:**
   - HTML5, CSS3 (Baseline features), Vanilla JavaScript.
   - Web Components for UI consistency.
   - **Firebase Authentication (for Google Login).**
   - **Kakao JavaScript SDK (for Kakao Login).**
 
-## **Current Task: Social Login System Implementation**
+## **Current Task: Enhanced UI and Auth Access Control**
 - **Plan:**
-  1. Add a login button/menu to the top right of the application.
-  2. Implement a dropdown or modal for login options (Google, Kakao).
-  3. Integrate Firebase Authentication for Google login.
-  4. Integrate Kakao JavaScript SDK for Kakao login.
-  5. Handle authentication state and display user profile (if logged in).
-  6. **Add "준서네 로또방" title to the header.**
+  1. Center the "준서네 로또방" title and significantly increase its size.
+  2. Implement a background image related to lotto/gambling.
+  3. Restrict the lotto draw functionality to authenticated users only.
+  4. Provide visual feedback (locked state) for unauthenticated users.
 - **Steps:**
-  - [x] Update `index.html` with login button and modal structure.
-  - [x] Add styles for the login menu and social buttons in `style.css`.
-  - [x] Initialize Firebase and Kakao SDKs in `main.js`.
-  - [x] Implement login/logout logic for both providers.
-  - [x] Add "준서네 로또방" header logo and styling.
-  - [x] Verify functionality and UI.
+  - [x] Update `style.css` with centered title, background image, and locked button styles.
+  - [x] Update `main.js` to check auth state before allowing lotto draws.
+  - [x] Add auto-opening login modal when unauthenticated users try to draw.
+  - [x] Verify all UI changes and functionality.

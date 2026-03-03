@@ -37,7 +37,25 @@ document.addEventListener('DOMContentLoaded', () => {
         return numbers.sort((a, b) => a - b).map(n => n.toString().padStart(2, '0'));
     }
 
+    // Auth State
+    let isAuthenticated = false;
+
+    function updateDrawButtonState() {
+        if (isAuthenticated) {
+            drawButton.classList.remove('locked');
+            drawButton.title = "";
+        } else {
+            drawButton.classList.add('locked');
+            drawButton.title = "로그인 후 이용 가능합니다.";
+        }
+    }
+
     function draw() {
+        if (!isAuthenticated) {
+            alert('로그인 후 이용 가능합니다!');
+            loginModal.style.display = "block";
+            return;
+        }
         lottoRows.forEach((row, index) => {
             setTimeout(() => {
                 const numbers = generateLottoNumbers();
@@ -52,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     drawButton.addEventListener('click', draw);
+    updateDrawButtonState();
 
     // Login Logic
     const loginModal = document.getElementById('loginModal');
@@ -75,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
+                isAuthenticated = true;
                 // User is signed in
                 loginBtn.style.display = "none";
                 userInfo.style.display = "flex";
@@ -82,10 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 userAvatar.src = user.photoURL || 'https://via.placeholder.com/32';
                 loginModal.style.display = "none";
             } else {
+                isAuthenticated = false;
                 // User is signed out
                 loginBtn.style.display = "block";
                 userInfo.style.display = "none";
             }
+            updateDrawButtonState();
         });
     }
 
@@ -113,13 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 Kakao.API.request({
                     url: '/v2/user/me',
                     success: function(res) {
-                        const user = res.kakao_account.profile;
+                        const profile = res.kakao_account.profile;
+                        isAuthenticated = true;
                         loginBtn.style.display = "none";
                         userInfo.style.display = "flex";
-                        userName.textContent = user.nickname;
-                        userAvatar.src = user.thumbnail_image_url;
+                        userName.textContent = profile.nickname;
+                        userAvatar.src = profile.thumbnail_image_url;
                         loginModal.style.display = "none";
-                        alert(user.nickname + '님 환영합니다!');
+                        updateDrawButtonState();
+                        alert(profile.nickname + '님 환영합니다!');
                     },
                     fail: function(error) {
                         console.error(error);
@@ -135,16 +159,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Logout
     logoutBtn.onclick = () => {
         if (typeof firebase !== 'undefined' && firebase.apps.length > 0 && firebase.auth().currentUser) {
-            firebase.auth().signOut();
+            firebase.auth().signOut().then(() => {
+                isAuthenticated = false;
+                updateDrawButtonState();
+            });
         } else if (typeof Kakao !== 'undefined' && Kakao.Auth.getAccessToken()) {
             Kakao.Auth.logout(() => {
+                isAuthenticated = false;
                 loginBtn.style.display = "block";
                 userInfo.style.display = "none";
+                updateDrawButtonState();
                 alert('로그아웃 되었습니다.');
             });
         } else {
+            isAuthenticated = false;
             loginBtn.style.display = "block";
             userInfo.style.display = "none";
+            updateDrawButtonState();
         }
     };
 });
