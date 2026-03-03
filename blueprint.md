@@ -8,7 +8,7 @@ A modern, framework-less web application for drawing lotto numbers. It provides 
   - Random lotto number generation (6 numbers from 1 to 45).
   - Ability to generate 5 sets of numbers at once.
   - **Social Login System (Google & Kakao).**
-  - **Auth-Restricted Access:** Drawing numbers requires a logged-in session.
+  - **Auth-Restricted Access:** The lotto draw tool is **hidden** by default and only becomes visible and usable after login.
 - **Design & Style:**
   - Dark-themed UI with a **Lotto-related background image**.
   - Modern typography and interactive buttons with glow effects.
@@ -21,14 +21,12 @@ A modern, framework-less web application for drawing lotto numbers. It provides 
   - **Firebase Authentication (for Google Login).**
   - **Kakao JavaScript SDK (for Kakao Login).**
 
-## **Current Task: Enhanced UI and Auth Access Control**
+## **Current Task: Conditional UI Visibility based on Auth State**
 - **Plan:**
-  1. Center the "준서네 로또방" title and significantly increase its size.
-  2. Implement a background image related to lotto/gambling.
-  3. Restrict the lotto draw functionality to authenticated users only.
-  4. Provide visual feedback (locked state) for unauthenticated users.
+  1. Hide the entire lotto drawing UI (container) by default.
+  2. Implement logic to show the lotto drawing UI only when a user is successfully logged in.
+  3. Ensure the UI hides again upon logout.
 - **Steps:**
-  - [x] Update `style.css` with centered title, background image, and locked button styles.
-  - [x] Update `main.js` to check auth state before allowing lotto draws.
-  - [x] Add auto-opening login modal when unauthenticated users try to draw.
-  - [x] Verify all UI changes and functionality.
+  - [x] Update `index.html` with an ID for the main container and initial `display: none`.
+  - [x] Update `main.js` to toggle `lottoMain.style.display` based on `isAuthenticated`.
+  - [x] Verify that the lotto tool is invisible to guests and visible to users.

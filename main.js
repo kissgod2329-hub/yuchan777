@@ -39,14 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auth State
     let isAuthenticated = false;
+    const lottoMain = document.getElementById('lottoMain');
 
     function updateDrawButtonState() {
         if (isAuthenticated) {
             drawButton.classList.remove('locked');
             drawButton.title = "";
+            lottoMain.style.display = "block";
         } else {
             drawButton.classList.add('locked');
             drawButton.title = "로그인 후 이용 가능합니다.";
+            lottoMain.style.display = "none";
         }
     }
 
